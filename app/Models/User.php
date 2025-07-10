@@ -48,4 +48,21 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    public static function getUserAttributes(): array
+    {
+        $user = self::first();
+
+        if ($user) {
+            return [
+                'name' => $user->name ?? 'Guest',
+                'title' => $user->title ?? 'No title available.',
+                'username' => $user->username ?? 'No username available.',
+                'email' => $user->email ?? 'No email available.',
+                'description' => $user->description ?? 'No description available.',
+            ];
+        }
+
+        return [];
+    }
 }

@@ -1,13 +1,16 @@
+@php
+    $user = App\Models\User::getUserAttributes();
+@endphp
 <header x-data="{ open: false }" class="bg-white shadow sticky top-0 z-50">
     <div x-cloak class="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
-        <h1 class="text-xl font-bold">Arjun Gunawan</h1>
+        <h1 class="text-xl font-bold">{{ $user['name'] }}</h1>
 
         <!-- Desktop menu -->
         <nav class="hidden md:flex space-x-4 text-sm">
             <a href="#skills" class="text-base hover:text-blue-600">Skills</a>
+            <a href="#projects" class="text-base hover:text-blue-600">Project</a>
             <a href="#experience" class="text-base hover:text-blue-600">Experience</a>
             <a href="#education" class="text-base hover:text-blue-600">Education</a>
-            <a href="#projects" class="text-base hover:text-blue-600">Project</a>
             <a href="#achievements" class="text-base hover:text-blue-600">Achievement</a>
         </nav>
 
@@ -32,9 +35,9 @@
         x-transition:leave="transition ease-in duration-200" x-transition:leave-start="opacity-100 translate-y-0"
         x-transition:leave-end="opacity-0 -translate-y-4" class="md:hidden px-4 pb-4 space-y-2 text-sm">
         <a @click="open = false" href="#skills" class="block hover:text-blue-600">Skills</a>
+        <a @click="open = false" href="#projects" class="block hover:text-blue-600">Project</a>
         <a @click="open = false" href="#experience" class="block hover:text-blue-600">Experience</a>
         <a @click="open = false" href="#education" class="block hover:text-blue-600">Education</a>
-        <a @click="open = false" href="#projects" class="block hover:text-blue-600">Project</a>
         <a @click="open = false" href="#achievements" class="block hover:text-blue-600">Achievement</a>
     </div>
     <!-- Mobile menu with transition End -->
